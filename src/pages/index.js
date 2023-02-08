@@ -190,7 +190,7 @@ export default function Home() {
               </div>
             )}
             <div className="mt-3 pl-4 pr-4 mb-0 d-flex justify-content-start align-items-center">
-              <p className="text-start mt-2 pl-4 pr-4 mb-2">Describe the image to create</p>
+              <p className="text-start mt-2 pl-4 pr-4 mb-2">Describe the image to create*</p>
               <a
                 href="#"
                 className="ms-2"
@@ -206,7 +206,7 @@ export default function Home() {
               rows="3"
             ></textarea>
             <p className="text-start mt-2 pl-4 pr-4 mb-2">
-              What you dont want
+              What you dont want (Optional)
             </p>
             <input
               value={negative_prompt}
@@ -280,10 +280,10 @@ export default function Home() {
               )}
             </div>
             {!imageForEnlargeViewMode ? (
-              <div className="row">
+              <div className="row mt-4 pt-2">
                 {loading &&
                   [1, 2, 3, 4].map((i) => (
-                    <div className={`col-6 col-sm-12 col-md-6 mb-3`} key={i}>
+                    <div className={`col-6 col-sm-12 col-md-6 mb-3 mt-1`} key={i}>
                       <div className={`${styles.imageHolderContainer}`}>
                         <SkeltonLoaderCard />
                       </div>
