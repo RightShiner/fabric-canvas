@@ -13,13 +13,13 @@ body {
 }
 
 .main-image-container {
-  max-height: 400px;
-  max-width: 500px;
+  /* max-height: 400px; */
+  /* max-width: 500px; */
   margin: auto;
 }
 .main-image-container img { 
-  max-height: 400px;
-  max-width: 500px;
+  /* max-height: 400px; */
+  /* max-width: 500px; */
   margin: auto;
 }
 /* :root {
