@@ -98,6 +98,7 @@ export default function Home() {
   const generateImage = async () => {
     const data = new FormData();
     if (image && image.name && prompt) {
+      setImageResponse(null)
       setLoading(true);
       await getSocialMediaContent();
       data.append("image", image, image.name);
@@ -242,11 +243,11 @@ export default function Home() {
                     <p className="text-gray mb-3">Click on images to enlarge</p>
                   )}
                 {imageForEnlargeViewMode && (
-                  <div className="d-flex">
+                  <div className="d-flex hoverEffect">
                     <Image
                       onClick={() => setImageForEnlargeViewMode(null)}
                       src={"/icons/backIcon.png"}
-                      className="cursor-pointer"
+                      className="cursor-pointer hoverEffect"
                       alt="like"
                       width={24}
                       height={24}
@@ -265,7 +266,7 @@ export default function Home() {
                       onClick={() => setImageEnlargeViewOption(icon.key)}
                     >
                       <i
-                        className={`fa-brands fa-xl ${icon.name} ${
+                        className={`hoverEffect fa-brands fa-xl ${icon.name} ${
                           imageEnlargeViewOption === icon.key
                             ? styles.active
                             : ""

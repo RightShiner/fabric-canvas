@@ -32,7 +32,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
       <div className="d-flex flex-row">
         <div className={`${styles.shareIconsText} d-flex flex-column`}>
         <Image
-          className="cursor-pointer me-4"
+          className="cursor-pointer hoverEffect me-4"
           src={"/icons/like.png"}
           alt="like"
           width={30}
@@ -42,7 +42,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
         </div>
         <div className={`${styles.shareIconsText} d-flex flex-column`}>
         <Image
-          className="cursor-pointer"
+          className="cursor-pointer hoverEffect"
           src={"/icons/dislike.png"}
           alt="dislike"
           width={30}
@@ -55,7 +55,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
       <div className={`${styles.shareIconsText} d-flex flex-column`}>
         <a download={imageUrlForShare} href={imageUrlForShare} title="ImageName">
           <Image
-           className="cursor-pointer"
+           className="cursor-pointer hoverEffect"
            src={"/icons/download.png"}
            alt="download"
            width={30}
@@ -72,7 +72,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
         rel="noopener noreferrer"
        >
         <Image
-          className="cursor-pointer"
+          className="cursor-pointer hoverEffect"
           src={"/icons/fb.png"}
           alt="fb"
           width={25}
@@ -89,7 +89,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
         rel="noopener noreferrer"
        >
         <Image
-          className="cursor-pointer"
+          className="cursor-pointer hoverEffect"
           src={"/icons/twitter.png"}
           alt="twitter"
           width={25}
@@ -99,7 +99,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
       </div>
       <div className={`${styles.shareIconsText} d-flex flex-column`}>
        <Image
-        className="cursor-pointer"
+        className="cursor-pointer hoverEffect"
         src={"/icons/insta.png"}
         alt="insta"
         width={25}
@@ -113,7 +113,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
         rel="noopener noreferrer"
        >
         <Image
-          className="cursor-pointer"
+          className="cursor-pointer hoverEffect"
           src={"/icons/pintrest.png"}
           alt="pintrest"
           width={25}
