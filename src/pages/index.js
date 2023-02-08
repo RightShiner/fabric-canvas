@@ -100,6 +100,7 @@ export default function Home() {
     if (image && image.name && prompt) {
       setImageResponse(null)
       setLoading(true);
+      setImageForEnlargeViewMode(null)
       await getSocialMediaContent();
       data.append("image", image, image.name);
       data.append("negative_prompt", negative_prompt);
@@ -157,6 +158,7 @@ export default function Home() {
                     setNegative_prompt("");
                     setSocialContent(null);
                     setImageForEnlargeViewMode(null);
+                    setLoading(false);
                   }}
                 >
                   <i className="fa-solid fa-2xl fa-circle-xmark"></i>
