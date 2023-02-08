@@ -176,7 +176,7 @@ export default function Home() {
                 >
                   Drag and Drop your Image Here.. <br />
                   or <br />
-                  Click here to Upload
+                  Click here to Upload*
                 </p>
                 <input
                   type="file"
