@@ -4,11 +4,15 @@ export default function Header() {
   return (
     <div className='container mt-4'>
         <div className="row">
-            <div className="col-6">
-                <p className={styles.link}>#breeze.ai</p>
+            <div className="col-6 align-items-center d-flex">
+                <p className={styles.link}>
+                  <a href='https://breeze.ai/' target={'_blank'} rel="noreferrer">breeze.ai</a>
+                </p>
             </div>
-            <div className="col-6 cursor-pointer">
-                <p className={`${styles.link1}`}>Try it for free!</p>
+            <div className="col-6 align-items-center justify-content-end d-flex">
+                <p className={`${styles.link1}`}>
+                  <a href='https://help.breeze.ai/' target={'_blank'} rel="noreferrer">Help</a>
+                </p>
             </div>
         </div>
     </div>

@@ -138,7 +138,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="col-sm-12 col-md-6 mt-5">
+          <div className="col-sm-12 col-md-6 mt-5 mb-2">
             {imageForView ? (
               <div className="position-relative rounded-5 main-image-container">
                 <img
@@ -186,8 +186,8 @@ export default function Home() {
                 />
               </div>
             )}
-            <div className="text-center mt-3 pl-4 pr-4 mb-0 d-flex justify-content-center">
-              <p>Describe the image to create</p>
+            <div className="mt-3 pl-4 pr-4 mb-0 d-flex justify-content-start align-items-center">
+              <p className="text-start mt-2 pl-4 pr-4 mb-2">Describe the image to create</p>
               <a
                 href="#"
                 className="ms-2"
@@ -202,7 +202,7 @@ export default function Home() {
               onChange={(e) => setPrompt(e.target.value)}
               rows="3"
             ></textarea>
-            <p className="text-center mt-2 pl-4 pr-4 mb-0">
+            <p className="text-start mt-2 pl-4 pr-4 mb-2">
               What you dont want
             </p>
             <input
@@ -218,7 +218,7 @@ export default function Home() {
                 My dinning table in a seashore
               </li>
             </ol> */}
-            <div className={`${styles.generateImgBtnWrap}`}>
+            <div className={`${styles.generateImgBtnWrap} text-center`}>
               <button
                 className={`${styles.generateImgBtn}`}
                 onClick={() => generateImage()}
@@ -232,14 +232,14 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="col-sm-12 col-md-6 mt-5 mb-3">
+          <div className="col-sm-12 col-md-6 mt-3 mb-3">
             <div className="row">
               <div className="col-lg-6 col-md-4 col-sm-4">
                 {!imageForEnlargeViewMode &&
                   imageResponse &&
                   imageResponse.generated_images &&
                   imageResponse.generated_images.length && (
-                    <p className="text-gray">Click on images to enlarge</p>
+                    <p className="text-gray mb-3">Click on images to enlarge</p>
                   )}
                 {imageForEnlargeViewMode && (
                   <div className="d-flex">

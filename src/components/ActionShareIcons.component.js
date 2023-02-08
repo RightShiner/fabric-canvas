@@ -28,35 +28,37 @@ export default function ActionShareIcons({ imageUrlForShare }) {
    }
   };
   return (
-    <div className={`${styles.shareIconsWrap} col-12 mt-2 d-flex justify-content-around `}>
+    <div className={`${styles.shareIconsWrap} col-12 mt-2 d-flex justify-content-around align-items-center`}>
+      <div className="d-flex flex-row">
+        <div className={`${styles.shareIconsText} d-flex flex-column`}>
+        <Image
+          className="cursor-pointer me-4"
+          src={"/icons/like.png"}
+          alt="like"
+          width={30}
+          height={25}
+          onClick={() => likeDislike(true)}
+        ></Image>
+        </div>
+        <div className={`${styles.shareIconsText} d-flex flex-column`}>
+        <Image
+          className="cursor-pointer"
+          src={"/icons/dislike.png"}
+          alt="dislike"
+          width={30}
+          height={25}
+          onClick={() => likeDislike(false)}
+        ></Image>
+        </div>
+      </div>
       <div><b>Share on:</b></div>
-      <div className={`${styles.shareIconsText} d-flex flex-column`}>
-       <Image
-        className="cursor-pointer"
-        src={"/icons/like.png"}
-        alt="like"
-        width={25}
-        height={25}
-        onClick={() => likeDislike(true)}
-       ></Image>
-      </div>
-      <div className={`${styles.shareIconsText} d-flex flex-column`}>
-       <Image
-        className="cursor-pointer"
-        src={"/icons/dislike.png"}
-        alt="dislike"
-        width={25}
-        height={25}
-        onClick={() => likeDislike(false)}
-       ></Image>
-      </div>
       <div className={`${styles.shareIconsText} d-flex flex-column`}>
         <a download={imageUrlForShare} href={imageUrlForShare} title="ImageName">
           <Image
            className="cursor-pointer"
            src={"/icons/download.png"}
            alt="download"
-           width={25}
+           width={30}
            height={25}
           ></Image>
         </a>
