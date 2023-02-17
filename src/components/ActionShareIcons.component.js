@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { firestore } from "@/config/firebase";
+import { firestore } from "config/firebase";
 import { collection, doc, setDoc } from "firebase/firestore";
-import styles from "@/styles/Home.module.css";
+import styles from "styles/Home.module.css";
 
 export default function ActionShareIcons({ imageUrlForShare }) {
   const likeDislikeCollection = collection(firestore,'likeDislike');
@@ -29,7 +29,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
   };
   return (
     <div className={`${styles.shareIconsWrap} col-12 mt-2 d-flex justify-content-around align-items-center`}>
-      <div className="d-flex flex-row">
+      <div className="flex-row d-flex">
         <div className={`${styles.shareIconsText} d-flex flex-column`}>
         <Image
           className="cursor-pointer hoverEffect me-4"

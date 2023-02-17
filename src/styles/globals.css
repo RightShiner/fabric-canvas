@@ -1,30 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+#auth {
+	background: url('../../public/assets/login_bck.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+}
+
+* {
+	text-decoration: none !important;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #F5FBFF;
-  font-family: 'Poppins';
+	margin: 0;
+	padding: 0;
+	background-color: #f5fbff;
+	font-family: 'Poppins';
+  color: rgb(79,78,105);
+}
+.text-primo {
+	--tw-text-opacity: 1;
+	color: rgb(121 190 241 / var(--tw-text-opacity));
+}
+.bg-primo {
+	--tw-text-opacity: 1;
+	background-color: rgb(121 190 241 / var(--tw-text-opacity));
 }
 
 .text-gray {
-  color: rgb(164, 164, 164);
+	color: rgb(164, 164, 164);
 }
 .cursor-pointer {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .main-image-container {
-  /* max-height: 400px; */
-  /* max-width: 500px; */
-  margin: auto;
+	/* max-height: 400px; */
+	/* max-width: 500px; */
+	margin: auto;
 }
-.main-image-container img { 
-  /* max-height: 400px; */
-  /* max-width: 500px; */
-  margin: auto;
+.main-image-container img {
+	/* max-height: 400px; */
+	/* max-width: 500px; */
+	margin: auto;
 }
 .hoverEffect:hover {
-  opacity: .6;
+	opacity: 0.6;
 }
+
+.nav-pills .nav-link {
+	color: rgb(79, 78, 105);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link,
+.nav-link.active {
+	background-color: rgb(121, 190, 241) !important;
+}
+
+.app-button--blue:hover:not([disabled]) {
+	background-position: left bottom;
+	color: rgb(121, 190, 241) !important;
+}
+
+.blue {
+	color: rgb(121, 190, 241) !important;
+}
+
+.card {
+	border-radius: 7px;
+	border: 1px solid hsla(0, 0%, 71%, 0.173);
+}
+
+.card--white {
+	background: #ffffff;
+}
+
+.card--semi-intense {
+	box-shadow: 5px 5px 10px #dbdbdb, -5px -5px 10px #ffffff;
+}
+
+.card--intense {
+	box-shadow: -5px 5px 10px #ededed, 5px -5px 10px #ffffff;
+}
+
+.card--normal {
+	box-shadow: 5px 5px 10px #f0f0f0, -5px -5px 10px #ffffff;
+}
+
+
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

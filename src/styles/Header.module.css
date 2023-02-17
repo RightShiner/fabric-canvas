@@ -1,17 +1,20 @@
 .link {
-    font-weight: bold;
-    font-size: 32px;
-    text-decoration: none;
-    color: #684BFF;
+	font-weight: bold;
+	font-size: 32px;
+	text-decoration: none;
+	color: rgb(121, 190, 241) !important;
+
 }
-.link1 a, .link a {
-    text-decoration: none;
+.link1 a,
+.link a {
+	text-decoration: none;
 }
 .link1 {
-    font-weight: bold;
-    font-size: 16px;
-    color: #684BFF;
-    text-align: right;
-    padding: 0;
-    margin: 0;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgb(121, 190, 241) !important;
+
+	text-align: right;
+	padding: 0;
+	margin: 0;
 }
