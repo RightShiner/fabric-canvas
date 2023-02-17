@@ -1,4 +1,4 @@
-import styles from '@/styles/Header.module.css'
+import styles from 'styles/Header.module.css'
 
 export default function Header() {
   return (
@@ -6,7 +6,7 @@ export default function Header() {
         <div className="row">
             <div className="col-6 align-items-center d-flex">
                 <p className={styles.link}>
-                  <a href='https://breeze.ai/' target={'_blank'} rel="noreferrer">breeze.ai</a>
+                  <a href='https://breeze.ai/' target={'_blank'} rel="noreferrer" className="blue">breeze.ai</a>
                 </p>
             </div>
             <div className="col-6 align-items-center justify-content-end d-flex">
