@@ -16,7 +16,6 @@ import {resetPassword} from 'queryhook/auth'
 
 const LoginSchema = yup.object().shape({
 	email: yup.string().email('Invalid email').required('Email is required'),
-	password: yup.string().min(6).max(50).required('Password is required'),
 });
 
 const LoginPage = () => {
@@ -47,7 +46,7 @@ const LoginPage = () => {
       setLoading(false)
       return
     }
-    resetPasswordMutation.mutate(formData)
+    resetPasswordMutation.mutate(formData.email)
     setLoading(false)
   }
 	return (
@@ -76,31 +75,6 @@ const LoginPage = () => {
 										/>
 									</div>
 
-									<div className="mb-4 form-outline">
-										<label className="form-label" htmlFor="typePasswordX-2">
-											Password
-										</label>
-										<input
-											type="password"
-											id="typePasswordX-2"
-											className="form-control form-control-lg"
-											onChange={e => setFormData({ ...formData, password: e.target.value })}
-										/>
-									</div>
-
-									{/* <!-- Checkbox --> */}
-									<div className="mb-4 form-check d-flex justify-content-start">
-										<input
-											className="mb-2 form-check-input me-1"
-											type="checkbox"
-											value=""
-											id="form1Example3"
-										/>
-										<label className="form-check-label " htmlFor="form1Example3">
-											{'  '}
-											Remember password{' '}
-										</label>
-										</div>
 
 										
 										<div className="d-flex mb-4 ">
