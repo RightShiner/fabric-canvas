@@ -39,7 +39,8 @@ API.interceptors.request.use(
     const token = LocalStorage.getItem()
     if (config.headers) {
       config.headers['x-api-key'] = API_KEY
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.token = `${token}`
+      config.headers.Accept = 'application/json'
     }
     return config
   },

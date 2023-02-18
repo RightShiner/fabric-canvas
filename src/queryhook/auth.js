@@ -1,22 +1,24 @@
-import { AUTH_API } from './base'
+import { AUTH_API } from './base';
 
 export const loginRequest = async (formData) => {
-  const { data } = await AUTH_API.post(`token`, {
-    ...formData
-  })
-  return data
-}
+	const { data } = await AUTH_API.post(`auth/login`, {
+		...formData,
+	});
+	return data;
+};
 
 export const registerRequest = async (formData) => {
-  const { data } = await AUTH_API.post(`signup`, {
-    ...formData
-  })
-  return data
-}
+	const { data } = await AUTH_API.post(`auth/sign-up`, {
+		...formData,
+	});
+	return data;
+};
 
 export const resetPassword = async (email) => {
-  const { data } = await AUTH_API.post(`reset_password`, {
-    email: email.email
-  })
-  return data
-}
+	const formData = new FormData();
+	formData.set('email', email);
+
+  AUTH_API.options.con
+	const { data } = await AUTH_API.post(`auth/reset-password`, formData);
+	return data;
+};

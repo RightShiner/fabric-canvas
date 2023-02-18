@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { signOutUser } from "utils/Firebase";
 import React from 'react';
 
 const nav = [
@@ -16,6 +17,7 @@ export default function Sidebar() {
 
 	const handleLogoutClick = () => {
 		localStorage.removeItem('auth-token');
+		signOutUser()
 		router.push('/login');
 	};
 

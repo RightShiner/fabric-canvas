@@ -12,6 +12,7 @@ import AppButton from 'Components/Shared/AppButton/AppButton';
 import Link from 'next/link';
 import styles from 'styles/Home.module.css';
 import Background from '/public/assets/login_bck.jpg';
+import { signInWithGooglePopuop } from 'utils/Firebase';
 
 const LoginSchema = yup.object().shape({
 	email: yup.string().email('Invalid email').required('Email is required'),
@@ -26,9 +27,13 @@ const LoginPage = () => {
 
 	const loginMutation = useMutation((loginInfo) => loginRequest(loginInfo), {
 		onSuccess: (data) => {
-			LocalStorage.setItem(data.token);
-			router.replace('/');
-			toast.success('You successfully logged in');
+			if (data.status_code !== 400) {
+				LocalStorage.setItem(data.token);
+				router.replace('/');
+				toast.success('You successfully logged in');
+			} else {
+			toast.error(data.detail.message);
+			}
 		},
 		onError: (error) => {
 			toast.error(error.response.data.message);
@@ -45,10 +50,43 @@ const LoginPage = () => {
 			setLoading(false);
 			return;
 		}
+
 		localStorage.setItem('user-email', formData.email);
 		loginMutation.mutate(formData);
 		setLoading(false);
 	};
+
+
+	const handleFirebaseLogin = async (event) => {
+		event.preventDefault();
+
+		try {
+			const { user } = await signInWithGooglePopuop();
+			
+			LocalStorage.setItem(user.accessToken);
+			router.replace('/');
+			toast.success('You successfully logged in');
+
+			console.log(data);
+			// setCurrentUser(user)
+			resetFormFields();
+		} catch (error) {
+			if (error.code === 'auth/wrong-password') {
+				toast.error('email/password is incorrect!');
+			} else if (error.code === 'auth/user-not-found') {
+				toast.error('account is not exists!');
+			} else {
+				console.log('error has happend', error);
+			}
+		}
+	};
+
+	// const signInWithPopUp = async () => {
+	// 	const { user } = await ();
+	// 	console.log(user);
+	// };
+
+	// =================
 	return (
 		<PublicLayout pageTitle="Login bs">
 			<section id="auth" className="vh-100">
@@ -113,7 +151,7 @@ const LoginPage = () => {
 										<div className="d-flex mb-1 ">
 											<p className="me-1">Forgot your password?</p>
 											<Link href="/reset-password" className="link-primary ">
-											 	reset password
+												reset password
 											</Link>
 										</div>
 										<div className="d-flex mb-4 ">
@@ -136,7 +174,8 @@ const LoginPage = () => {
 											// className="btn btn-lg btn-block btn-secondary w-100"
 											className={`${styles['app-button']} ${styles['app-button--red']} bg-danger w-100`}
 											style={{ backgroundColor: '#dd4b39' }}
-											type="submit"
+											type="button"
+											onClick={handleFirebaseLogin}
 										>
 											<i className="fab fa-google me-2"></i> Sign in with google
 										</button>
