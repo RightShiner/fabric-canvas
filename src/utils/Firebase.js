@@ -21,8 +21,8 @@ const firebaseConfig = {
   projectId: "cflow-prod",
   storageBucket: "cflow-prod.appspot.com",
   messagingSenderId: "422652989354",
-  appId: "1:422652989354:web:eb166c3f6f807da66525d3",
-  measurementId: "G-18X2P35G1F"
+  appId: "1:422652989354:web:10b68b86a791fac96525d3",
+  measurementId: "G-FZ3DRR13LV"
 }
 
 // Initialize Firebase
