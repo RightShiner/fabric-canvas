@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
 import { useQuery } from 'react-query'
-// import { AppLoader } from 'Components/Shared/AppLoader'
 import { BriefcaseIcon } from '@heroicons/react/24/solid'
 import StatisticsCard from 'components/StatisticsCard'
 import PlanCard from 'components/PlanCard'
@@ -20,19 +19,16 @@ const Accounts = () => {
   //     </h2>
   //   )
 
+
   return (
     <div className='h-full px-3'>
       <div className='d-flex mb-4 flex-wrap justify-start gap-4 mb-7 lg:gap-24'>
-        <StatisticsCard value={data?.user_info?.catalogs} label='Number of Catalogs' icon={cardIcon} />
-        <StatisticsCard value={data?.user_info?.products} label='Number of Products' icon={cardIcon} />
-        <StatisticsCard
-          value={data?.user_info?.product_processed}
-          label='Number of Processed Products'
-          icon={cardIcon}
-        />
+        <StatisticsCard value={data?.data?.generated_images_count} label='Generated Images Count' icon={cardIcon} />
+        <StatisticsCard value={data?.data?.input_images_count} label='Input Images Count' icon={cardIcon} />
+
       </div>
       <div className='flex justify-between gap-5 mb-7'>
-        <PlanCard title='Starter Plan' price={data?.user_info?.['Credits used']} balance={data?.user_info?.balance} />
+        <PlanCard title='Starter Plan' price={data?.data?.credits_used} balance={data?.data?.total_credits} />
       </div>
     </div>
   )

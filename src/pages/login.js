@@ -5,10 +5,10 @@ import { useRouter } from 'next/router';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import { useMutation } from 'react-query';
-import { loginRequest } from 'queryhook/auth';
+import { emailLoginRequest, loginRequest } from 'queryhook/auth';
 import { LocalStorage } from 'services/localStorage';
 import PublicLayout from 'components/Layout/Public/PublicLayout';
-import AppButton from 'Components/Shared/AppButton/AppButton';
+import AppButton from 'components/Shared/AppButton/AppButton';
 import Link from 'next/link';
 import styles from 'styles/Home.module.css';
 import Background from '/public/assets/login_bck.jpg';
@@ -24,6 +24,22 @@ const LoginPage = () => {
 
 	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({ email: '', password: '' });
+
+	const registerWithFirebaseMutation = useMutation(
+		(email) => emailLoginRequest(email),
+		{
+			onSuccess: (data) => {
+				if (data.status_code !== 400) {
+					router.replace('/');
+				} else {
+					toast.error(data.detail.message);
+				}
+			},
+			onError: (error) => {
+				toast.error(error.response.data.message);
+			},
+		}
+	);
 
 	const loginMutation = useMutation((loginInfo) => loginRequest(loginInfo), {
 		onSuccess: (data) => {
@@ -61,9 +77,10 @@ const LoginPage = () => {
 		event.preventDefault();
 
 		try {
-			const { user } = await signInWithGooglePopuop();
-			
-			LocalStorage.setItem(user.accessToken);
+			const data = await signInWithGooglePopuop();
+
+			registerWithFirebaseMutation.mutate(data.user.email);
+			LocalStorage.setItem(data.user.accessToken);
 			router.replace('/');
 			toast.success('You successfully logged in');
 
@@ -89,7 +106,7 @@ const LoginPage = () => {
 	// =================
 	return (
 		<PublicLayout pageTitle="Login bs">
-			<section id="auth" className="vh-100">
+			<section id="auth" className="">
 				<div className="container py-5 h-100">
 					<div className="row d-flex justify-content-center align-items-center h-100">
 						<div className="col-12 col-md-8 col-lg-6 col-xl-5">

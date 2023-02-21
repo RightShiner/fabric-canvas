@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('./auth.css');
 
 #auth {
 	background: url('../../public/assets/login_bck.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 * {
@@ -17,15 +18,22 @@ body {
 	padding: 0;
 	background-color: #f5fbff;
 	font-family: 'Poppins';
-  color: rgb(79,78,105);
+	min-height: 100vh;
+	font: Roboto, sans-serif;
+	color: rgb(79, 78, 105);
 }
 .text-primo {
 	--tw-text-opacity: 1;
-	color: rgb(121 190 241 / var(--tw-text-opacity));
+	color: rgba(104, 75, 255, 0.89);
 }
 .bg-primo {
 	--tw-text-opacity: 1;
-	background-color: rgb(121 190 241 / var(--tw-text-opacity));
+	background-color: rgba(220, 215, 250, 0.89) !important;
+}
+
+.bg-primo--light {
+	background-color: rgba(229, 226, 243, 0.89) !important;
+
 }
 
 .text-gray {
@@ -33,6 +41,21 @@ body {
 }
 .cursor-pointer {
 	cursor: pointer;
+}
+
+.hover--bold:hover {
+  color: rgb(85, 85, 232) !important;
+}
+
+.right-10 {
+	left: 85px;
+}
+
+@media screen and (min-width: 990px) {
+	.right-10 {
+		left: unset;
+		right: -10px;
+	}
 }
 
 .main-image-container {
@@ -56,16 +79,16 @@ body {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link,
 .nav-link.active {
-	background-color: rgb(121, 190, 241) !important;
+	background-color: rgba(104, 75, 255, 0.89) !important;
 }
 
 .app-button--blue:hover:not([disabled]) {
 	background-position: left bottom;
-	color: rgb(121, 190, 241) !important;
+	color: rgba(104, 75, 255, 0.89) !important;
 }
 
 .blue {
-	color: rgb(121, 190, 241) !important;
+	color: rgba(104, 75, 255, 0.89) !important;
 }
 
 .card {
@@ -88,7 +111,6 @@ body {
 .card--normal {
 	box-shadow: 5px 5px 10px #f0f0f0, -5px -5px 10px #ffffff;
 }
-
 
 /* :root {
   --max-width: 1100px;

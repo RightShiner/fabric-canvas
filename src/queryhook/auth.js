@@ -7,6 +7,15 @@ export const loginRequest = async (formData) => {
 	return data;
 };
 
+export const emailLoginRequest = async (email) => {
+	const formData = new FormData();
+	formData.set('email', email);
+
+	const { data } = await AUTH_API.post(`auth/email-login`, formData);
+	return data;
+};
+
+
 export const registerRequest = async (formData) => {
 	const { data } = await AUTH_API.post(`auth/sign-up`, {
 		...formData,

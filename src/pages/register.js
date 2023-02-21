@@ -6,16 +6,16 @@ import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import Link from 'next/link';
 import { useMutation } from 'react-query';
-import AppButton from '../Components/Shared/AppButton/AppButton';
-import PublicLayout from '../Components/Layout/Public/PublicLayout';
-import { registerRequest } from 'queryhook/auth';
+import AppButton from '../components/Shared/AppButton/AppButton';
+import PublicLayout from '../components/Layout/Public/PublicLayout';
+import { emailLoginRequest, registerRequest } from 'queryhook/auth';
 import styles from 'styles/Home.module.css';
 import {
 	createAuthUserWithEmailAndPassword,
 	signInAuthUserWithEmailAndPassword,
-	signInWithGooglePopuop
+	signInWithGooglePopuop,
 } from 'utils/Firebase';
-import { LocalStorage } from "services/localStorage";
+import { LocalStorage } from 'services/localStorage';
 
 const RegisterSchema = yup.object().shape({
 	email: yup.string().email('Invalid email').required('Email is required'),
@@ -85,14 +85,30 @@ const RegisterPage = () => {
 	// 	console.log(a);
 	// };
 
+	const registerWithFirebaseMutation = useMutation(
+		(email) => emailLoginRequest(email),
+		{
+			onSuccess: (data) => {
+				if (data.status_code !== 400) {
+					toast.success('User successfully registered');
+					router.replace('/');
+				} else {
+					toast.error(data.detail.message);
+				}
+			},
+			onError: (error) => {
+				toast.error(error.response.data.message);
+			},
+		}
+	);
+
 	const onSignUpWithFirebase = async (event) => {
 		event.preventDefault();
 		try {
 			const { user } = await signInWithGooglePopuop();
-			console.log(user);
-			registerMutation.mutate({email: user.email, password: user.uid})
-			LocalStorage.setItem(user.accessToken)
-			router.push('/')
+			registerWithFirebaseMutation.mutate(user.email);
+			LocalStorage.setItem(user.accessToken);
+			router.push('/');
 			// await createUserDocumentFromAuth(user, { displayName });
 
 			resetFormFields();
@@ -107,7 +123,7 @@ const RegisterPage = () => {
 
 	return (
 		<PublicLayout pageTitle="Register">
-			<section id="auth" className="vh-100">
+			<section id="auth" className="">
 				<div className="container py-5 h-100">
 					<div className="row d-flex justify-content-center align-items-center h-100">
 						<div className="col-12 col-md-8 col-lg-6 col-xl-5">
