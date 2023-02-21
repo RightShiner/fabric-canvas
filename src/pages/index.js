@@ -11,6 +11,13 @@ import TwitterEnlarge from 'components/TwitterEnlarge.component';
 import axios from 'axios';
 import SkeltonLoaderCard from 'components/SkeltonLoaderCard.component';
 import DashboardLayout from 'components/Layout/Dashboard/DashboardLayout';
+import { useMutation } from 'react-query';
+import { generate } from 'queryhook/generate';
+import { LocalStorage } from 'services/localStorage';
+
+
+
+
 
 const icons = [
 	{
@@ -72,6 +79,8 @@ export default function Home() {
 		}
 	};
 
+	const generateMutation = useMutation((data) => generate(data));
+
 	const getSocialMediaContent = async () => {
 		const socialPlatform = ['Instagram', 'Facebook', 'Pinterest', 'Twitter']; //TikTok
 		const requests = socialPlatform.map((platform) =>
@@ -110,15 +119,19 @@ export default function Home() {
 			setLoading(true);
 			setImageForEnlargeViewMode(null);
 			await getSocialMediaContent();
-			data.append('image', image, image.name);
-			data.append('negative_prompt', negative_prompt);
 			data.append('prompt', prompt);
+			data.append('negative_prompt', negative_prompt);
+			data.append('super_resolution', '');
+			data.append('image', image, image.name);
+
+			// const response = generateMutation.mutate(data)
 			const response = await axios.post(
-				'https://socialflow-ai-hvrhzwzgoa-uc.a.run.app/predict-image',
+				'https://image-gen-v2-hvrhzwzgoa-uc.a.run.app/image-gen/predict-image',
 				data,
 				{
 					headers: {
 						'Content-Type': 'multipart/form-data',
+						token: LocalStorage.getItem(),
 					},
 				}
 			);
@@ -138,16 +151,9 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Header></Header>
 			<div className="container mb-2">
 				<div className="row">
-					<div className="col-12">
-						<div className={styles.subHeaderContainer}>
-							<p className={styles.subHeaderTitle}>
-								Re-create your product images in seconds using #breeze.ai
-							</p>
-						</div>
-					</div>
+
 					<div className="mt-5 mb-2 col-sm-12 col-md-6">
 						{imageForView ? (
 							<div className="position-relative rounded-5 main-image-container">

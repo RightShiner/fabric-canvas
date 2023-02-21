@@ -1,9 +1,24 @@
 import Image from 'next/image';
-import { db } from "utils/Firebase";
+import { db } from 'utils/Firebase';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import styles from 'styles/Home.module.css';
+import { useMutation } from 'react-query';
+import { generateSuperResolution } from 'queryhook/generate';
+import { saveAs } from "file-saver";
+import { toast } from "react-toastify";
 
 export default function ActionShareIcons({ imageUrlForShare }) {
+	const convertImageToSuperResMutation = useMutation((imageUrlForShare) =>
+		generateSuperResolution(imageUrlForShare), {
+		onSuccess(data) {
+				console.log(data);
+			saveAs(data.data.image_url)
+			toast.info('Image downloading...')
+		}, onError() {
+				toast.error('Failed to load image')
+		}}
+	);
+
 	const likeDislikeCollection = collection(db, 'likeDislike');
 	const likeDislike = async (flag) => {
 		// get the current timestamp
@@ -57,9 +72,12 @@ export default function ActionShareIcons({ imageUrlForShare }) {
 				<b>Share on:</b>
 			</div>
 			<div className={`${styles.shareIconsText} d-flex flex-column`}>
-				<a
-					download={imageUrlForShare}
-					href={imageUrlForShare}
+				<button
+					// download={imageUrlForShare}
+					onClick={() =>
+						convertImageToSuperResMutation.mutate(imageUrlForShare)
+					}
+					// href={imageUrlForShare}
 					title="ImageName"
 				>
 					<Image
@@ -69,7 +87,7 @@ export default function ActionShareIcons({ imageUrlForShare }) {
 						width={30}
 						height={25}
 					></Image>
-				</a>
+				</button>
 			</div>
 			<div className={`${styles.shareIconsText} d-flex flex-column`}>
 				<a

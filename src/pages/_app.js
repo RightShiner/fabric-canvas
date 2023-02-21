@@ -1,9 +1,4 @@
 // bootstrap css
-import 'bootstrap/dist/css/bootstrap.css';
-import 'styles/fbEnlarge.css';
-import 'styles/twitterEnlarge.css';
-import 'styles/skeltonLoader.css';
-import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
@@ -11,6 +6,11 @@ import { useState, useRef, useEffect } from 'react';
 import { UserProvider } from 'contexts/UserContext';
 import { useRouter } from 'next/router';
 import { CheckUserValid } from "utils/auth.helper";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'styles/fbEnlarge.css';
+import 'styles/twitterEnlarge.css';
+import 'styles/skeltonLoader.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }) {
 	const [queryClient] = useState(

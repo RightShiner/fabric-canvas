@@ -1,68 +1,77 @@
-import React, { FC, ButtonHTMLAttributes } from 'react'
-import AppButtonSpinner from './AppButtonSpinner'
+import React, { FC, ButtonHTMLAttributes } from 'react';
+import AppButtonSpinner from './AppButtonSpinner';
 
-
-const PrimaryClasses = ' bg-blue-500 hover:bg-blue-600 text-white '
-const DangerClasses = ' bg-red-500 hover:bg-red-600 text-white '
-const DefaultClasses = ' bg-white hover:bg-gray-200 text-gray-500 border border-gray-200 '
-const SecondaryClasses = ' bg-gray-700 hover:text-gray-700 hover:bg-white text-white border border-gray-200 '
-const successClasses = ' bg-green-500 hover:bg-green-600 text-white '
+const PrimaryClasses = ' bg-blue-500 hover:bg-blue-600 text-white ';
+const DangerClasses = ' bg-red-500 hover:bg-red-600 text-white ';
+const DefaultClasses =
+	' bg-white hover:bg-gray-200 text-gray-500 border border-gray-200 ';
+const SecondaryClasses =
+	' bg-gray-700 hover:text-gray-700 hover:bg-white text-white border border-gray-200 ';
+const successClasses = ' bg-green-500 hover:bg-green-600 text-white ';
 
 const selectVariant = (variant) => {
-  switch (variant) {
-    case 'primary':
-      return PrimaryClasses
-    case 'danger':
-      return DangerClasses
-    case 'light':
-      return DefaultClasses
-    case 'secondary':
-      return SecondaryClasses
-    case 'success':
-      return successClasses
-    default:
-      return DefaultClasses
-  }
-}
+	switch (variant) {
+		case 'primary':
+			return PrimaryClasses;
+		case 'danger':
+			return DangerClasses;
+		case 'light':
+			return DefaultClasses;
+		case 'secondary':
+			return SecondaryClasses;
+		case 'success':
+			return successClasses;
+		default:
+			return DefaultClasses;
+	}
+};
 
 const selectSize = (size) => {
-  switch (size) {
-    case 'sm':
-      return 'px-2 py-1 text-xs'
-    case 'lg':
-      return 'px-4 py-2 text-lg'
-    default:
-      return 'px-3 py-2 text-base'
-  }
-}
+	switch (size) {
+		case 'sm':
+			return 'px-2 py-1 text-xs';
+		case 'lg':
+			return 'px-4 py-2 text-lg';
+		default:
+			return 'px-3 py-2 text-base';
+	}
+};
 const AppButton = ({
-  onClick,
-  size,
-  variant,
-  type,
-  children,
-  extendClass,
-  isLoading,
-  isFull,
-  ...otherProps
+	onClick,
+	size,
+	variant,
+	type,
+	children,
+	extendClass,
+	isLoading,
+	isFull,
+	...otherProps
 }) => {
-  let classes = `btn ${size ? selectSize(size) : 'px-5 py-2.5 '} ${selectVariant(variant)} ${
-    isLoading ? 'cursor-not-allowed opacity-75 ' : ''
-  } ${extendClass || ''}`
-  classes += isFull ? ' w-full' : ''
-  return (
-    // eslint-disable-next-line react/button-has-type
-    <button onClick={onClick} type={type} disabled={isLoading} className={classes} {...otherProps}>
-      {isLoading ? <AppButtonSpinner height={22} /> : children}
-    </button>
-  )
-}
+	let classes = `btn ${
+		size ? selectSize(size) : 'px-5 py-2.5 '
+	} ${selectVariant(variant)} ${
+		isLoading ? 'cursor-not-allowed opacity-75 ' : ''
+	} ${extendClass || ''}`;
+	classes += isFull ? ' w-full' : '';
+	return (
+		// eslint-disable-next-line react/button-has-type
+		<button
+			onClick={onClick}
+			type={type}
+			disabled={isLoading}
+			className={classes}
+			{...otherProps}
+		>
+			{isLoading ? <AppButtonSpinner height={22} /> : children}
+		</button>
+	);
+};
 AppButton.defaultProps = {
-  size: 'lg',
-  extendClass: '',
-  isLoading: false,
-  isFull: false,
-  onClick: () => {}
-}
+	size: 'lg',
+	extendClass: '',
+	isLoading: false,
+	isFull: false,
+	onClick: () => {},
+};
 
-export default AppButton
+export default AppButton;

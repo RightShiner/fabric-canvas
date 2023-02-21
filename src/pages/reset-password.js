@@ -8,7 +8,7 @@ import { useMutation } from 'react-query';
 import { loginRequest } from 'queryhook/auth';
 import { LocalStorage } from 'services/localStorage';
 import PublicLayout from 'components/Layout/Public/PublicLayout';
-import AppButton from 'Components/Shared/AppButton/AppButton';
+import AppButton from 'components/Shared/AppButton/AppButton';
 import Link from 'next/link';
 import styles from 'styles/Home.module.css';
 import Background from '/public/assets/login_bck.jpg'
