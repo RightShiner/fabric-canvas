@@ -47,6 +47,7 @@ export default function Navbar() {
 						className="nav-link text-primary mx-4"
 						href="https://help.breeze.ai/"
 						target="_blank"
+						rel="noreferrer"
 					>
 						Help
 					</a>
