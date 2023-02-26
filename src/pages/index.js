@@ -16,6 +16,7 @@ import { generate } from "queryhook/generate";
 import { LocalStorage } from "services/localStorage";
 import classNames from "classnames";
 import Prompt from "components/Prompt/Prompt";
+import Result from "components/Result/Result";
 
 const icons = [
   {
@@ -263,7 +264,7 @@ export default function Home() {
               <Prompt />
             </TabPanel>
             <TabPanel value={activeTab} index={1}>
-              {"result "}
+              <Result />
             </TabPanel>
           </TabContent>
         </div>
