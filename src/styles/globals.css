@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('./auth.css');
 
+:root {
+  --color-primary: rgb(104, 75, 255);
+}
 #auth {
 	background: url('../../public/assets/login_bck.jpg');
 	background-repeat: no-repeat;
@@ -9,35 +12,44 @@
 	min-height: 100vh;
 }
 
-* {
-	text-decoration: none !important;
+a {
+	text-decoration: none;
 }
 
 body {
 	margin: 0;
 	padding: 0;
 	background-color: #f5fbff;
-	font-family: 'Poppins';
+	font-family: 'Poppins', sans-serif;
 	min-height: 100vh;
-	font: Roboto, sans-serif;
 	color: rgb(79, 78, 105);
 }
+
+.text-20 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
 .text-primo {
 	--tw-text-opacity: 1;
-	color: rgba(104, 75, 255, 0.89);
+	color: var(--color-primary, 0.89)
 }
+
 .bg-primo {
 	--tw-text-opacity: 1;
 	background-color: rgba(220, 215, 250, 0.89) !important;
 }
 
 .bg-primo--light {
-	background-color: rgba(229, 226, 243, 0.89) !important;
+	background-color: rgba(255,255,255) !important;
 
 }
 
 .text-gray {
 	color: rgb(164, 164, 164);
+}
+.text-dark-100 {
+  color: rgb(0, 0, 0, 0.5);
 }
 .cursor-pointer {
 	cursor: pointer;
@@ -94,6 +106,8 @@ body {
 .card {
 	border-radius: 7px;
 	border: 1px solid hsla(0, 0%, 71%, 0.173);
+  background: transparent;
+  border: none;
 }
 
 .card--white {

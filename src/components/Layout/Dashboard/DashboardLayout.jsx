@@ -1,27 +1,23 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode } from "react";
 // import Header from './Header'
-import CustomSidebar from './Sidebar'
-import Layout from '../Layout'
-import { WithAuth } from '../../../HOC/WithAuth'
-import Navbar from "../Navbar"
-
+import CustomSidebar from "./Sidebar";
+import Layout from "../Layout";
+import { WithAuth } from "../../../HOC/WithAuth";
+import Navbar from "../Navbar";
 
 const DashboardLayout = ({ pageTitle, children }) => {
   return (
     <Layout pageTitle={pageTitle}>
-      <div className='d-flex flex-column vh-100 h-100 bg-primo--light ' >
-        <Navbar/>
-        <div className='` w-100 h-100 p-4'>
-          {/* <Header /> */}
-          <div className="card bg-white w-100 p-4">{children}</div>
-        </div>
+      <div className="d-flex flex-column vh-100 h-100 ">
+        <Navbar />
+        <div className="w-100 container">{children}</div>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
 DashboardLayout.defaultProps = {
-  pageTitle: 'title'
-}
+  pageTitle: "title",
+};
 
-export default WithAuth(DashboardLayout)
+export default WithAuth(DashboardLayout);

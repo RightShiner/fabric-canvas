@@ -1,0 +1,19 @@
+.header1 {
+  position: absolute;
+width: 226px !important; 
+height: 72px !important;
+left: 65px !important;
+top: 35px !important;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 72px;
+
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #684BFF;
+}
